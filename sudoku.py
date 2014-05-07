@@ -61,27 +61,25 @@ def check_sudoku(sudoku):
     check = True
     list = []
     
-    # create a list
-    for n in range(0,len(sudoku)):
-        list.append(n+1)
-
-    # check for rows
-    for i in sudoku:
-        for e in list:
-            if e not in i:
-                #if there's any elements in list not in i
-                check = False
-    
-    # create the collum
-    for j in range(0,len(sudoku)):
+    for j in range(0,len(sudoku)):       
+        # create the list
+        list.append(j+1)
+        
+        
         collum= []
+        # create the collum[0],collum[1]...
         for i in sudoku:
+            # append([0][0],[1][0],[2][0]...)
             collum.append(i[j])
-    # check for column
-    for e in list:
-        if e not in collum:
-            check = False
+    print collum
 
+
+    # check for rows and collum
+    for row in sudoku:
+        for e in list:
+            if e not in row or e not in collum:
+                #if there's any elements in list not in row or collum
+                check = False
 
     return check
 
@@ -105,5 +103,4 @@ print check_sudoku(incorrect4)
 
 print check_sudoku(incorrect5)
 #>>> False
-
 
