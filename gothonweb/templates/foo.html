@@ -1,0 +1,15 @@
+$def with (foo)
+
+<html>
+    <head>
+    	<title>My Foo Page</title>
+    </head>
+<body>
+
+$if foo:
+    This is my foo page <em style="color: green; font-size: 2em;">$foo</em>.
+$else:
+    <em>Hello</em>, world!
+
+</body>
+</html>
