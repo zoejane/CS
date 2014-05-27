@@ -5,7 +5,8 @@ db = web.database(dbn='postgres', user='postgres', pw='1234', db='postgres')
 
 urls = (
 	#'/(.*)','index'
-	'/', 'index'
+	'/', 'index',
+	'/add', 'add'
 	)
 
 render = web.template.render('templates/')
@@ -20,6 +21,12 @@ class index():
 		#return render.index(name)
 		todos = db.select('todo')
 		return render.index(todos)
+
+class add:
+	def POST(self):
+		i = web.input()
+		n = db.insert('todo', title=i.title)
+		raise web.seeother('/')
 		
 
 if __name__ == '__main__':
